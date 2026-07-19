@@ -1,9 +1,17 @@
-name: Publish tagged release
+name: Publish release
 
 on:
   push:
     tags:
       - "v*"
+    branches:
+      - "release/v1.0.0"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag
+        required: true
+        default: v1.0.0
 
 permissions:
   contents: write
@@ -15,30 +23,63 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install build dependencies
-        run: sudo apt-get update && sudo apt-get install -y busybox zip
-
-      - name: Validate tag and module version
+      - name: Resolve release tag
+        id: release
         shell: bash
+        env:
+          MANUAL_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            tag="$GITHUB_REF_NAME"
+          elif [[ -n "${MANUAL_TAG:-}" ]]; then
+            tag="$MANUAL_TAG"
+          else
+            tag=v1.0.0
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Validate version
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           set -euo pipefail
           version=$(sed -n 's/^version=//p' module/module.prop | head -n 1)
-          test "$version" = "$GITHUB_REF_NAME"
+          test "$version" = "$RELEASE_TAG"
+
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y busybox zip
 
       - name: Build release package
         run: ./scripts/build.sh
 
-      - name: Create or update GitHub Release
+      - name: Create tag for branch or manual release
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         shell: bash
         run: |
           set -euo pipefail
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --clobber
+          if ! gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$RELEASE_TAG" >/dev/null 2>&1; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs" \
+              -f ref="refs/tags/$RELEASE_TAG" \
+              -f sha="$GITHUB_SHA" >/dev/null
+          fi
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" dist/*.zip dist/*.sha256 --clobber
           else
-            gh release create "$GITHUB_REF_NAME" \
+            gh release create "$RELEASE_TAG" \
               dist/*.zip dist/*.sha256 \
-              --title "NeoRender Engine $GITHUB_REF_NAME" \
+              --title "NeoRender Engine $RELEASE_TAG" \
               --notes-file RELEASE_NOTES.md
           fi
