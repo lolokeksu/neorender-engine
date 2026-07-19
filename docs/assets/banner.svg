@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">NeoRender Engine</title>
+  <desc id="desc">Controlled Android HWUI rendering with SkiaGL and SkiaVK</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#c4b5fd"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="300" rx="28" fill="url(#bg)"/>
+
+  <g transform="translate(88 48)">
+    <rect x="0" y="0" width="204" height="204" rx="46" fill="#111827" opacity=".72"/>
+    <rect x="25" y="29" width="116" height="68" rx="15" fill="url(#accent)"/>
+    <rect x="45" y="69" width="116" height="68" rx="15" fill="url(#accent)" opacity=".82"/>
+    <rect x="65" y="109" width="116" height="68" rx="15" fill="url(#accent)" opacity=".64"/>
+    <path d="M50 53h66M50 70h43M70 93h66M70 110h43M90 133h66M90 150h43" stroke="url(#panel)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M153 31 186 51l-33 20Z" fill="#f8fafc" opacity=".94"/>
+  </g>
+
+  <text x="330" y="126" fill="#f8fafc" font-family="Arial, sans-serif" font-size="64" font-weight="700">NeoRender Engine</text>
+  <text x="333" y="178" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="28">Controlled HWUI rendering · Android 13</text>
+  <text x="333" y="220" fill="#94a3b8" font-family="Arial, sans-serif" font-size="21">SkiaGL · SkiaVK · APatch · by Lolokeksu</text>
+</svg>
