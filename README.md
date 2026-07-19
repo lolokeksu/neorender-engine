@@ -4,7 +4,8 @@
 
 **Transparent HWUI renderer control for Realme GT Neo 5 SE on Android 13**
 
-[![Release](https://img.shields.io/badge/release-v1.0.0-0969da?style=flat-square)](../../releases/latest)
+[![Release](https://img.shields.io/github/v/release/lolokeksu/neorender-engine?display_name=tag&sort=semver&style=flat-square)](https://github.com/lolokeksu/neorender-engine/releases/latest)
+[![Validate](https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml/badge.svg)](https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml)
 ![Android](https://img.shields.io/badge/Android-13-3ddc84?style=flat-square&logo=android&logoColor=white)
 ![Device](https://img.shields.io/badge/device-RMX3700%20%7C%20RMX3701-555?style=flat-square)
 ![Root](https://img.shields.io/badge/root-APatch%20tested-orange?style=flat-square)
@@ -12,7 +13,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 ![Telemetry](https://img.shields.io/badge/telemetry-none-success?style=flat-square)
 
-[Русская документация](README_RU.md) · [Releases](../../releases) · [Issues](../../issues) · [Security](SECURITY.md)
+[Русская документация](README_RU.md) · [Releases](https://github.com/lolokeksu/neorender-engine/releases) · [Issues](https://github.com/lolokeksu/neorender-engine/issues) · [Security](SECURITY.md)
 
 </div>
 
@@ -83,7 +84,7 @@ The global `vulkan` profile is experimental on Realme UI. Physical testing showe
 
 ## Download
 
-Stable packages are published on the [GitHub Releases page](../../releases). Install only the ZIP attached to a release and verify its accompanying `.sha256` file.
+Stable packages are published on the [GitHub Releases page](https://github.com/lolokeksu/neorender-engine/releases). Install only the ZIP attached to a release and verify its accompanying `.sha256` file.
 
 Do not flash repository source archives such as “Source code (zip)”. They are not Magisk/APatch module packages.
 
@@ -325,7 +326,7 @@ No source code from those projects is included in NeoRender Engine.
 
 Author and maintainer: **Lolokeksu**
 
-Use [GitHub Issues](../../issues) for reproducible bugs and compatibility reports. Include `neorenderctl doctor`, relevant history/log lines and exact firmware information.
+Use [GitHub Issues](https://github.com/lolokeksu/neorender-engine/issues) for reproducible bugs and compatibility reports. Include `neorenderctl doctor`, relevant history/log lines and exact firmware information.
 
 ## License
 

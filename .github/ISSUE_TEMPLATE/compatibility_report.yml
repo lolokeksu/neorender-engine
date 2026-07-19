@@ -1,0 +1,44 @@
+name: Compatibility report
+description: Submit a physical-device test result
+title: "[Compatibility]: "
+labels: ["compatibility"]
+body:
+  - type: dropdown
+    attributes:
+      label: Device identifier
+      options:
+        - RMX3700
+        - RMX3701
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Android build fingerprint
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Root manager and version
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Tested profile
+      options:
+        - stock
+        - compatibility / SkiaGL
+        - vulkan / SkiaVK
+        - per-application session
+        - paired A/B benchmark
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Result
+      description: Include boot behavior, reported pipeline, jank/p95 result, temperature change and stability observations.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Diagnostic output
+      render: shell

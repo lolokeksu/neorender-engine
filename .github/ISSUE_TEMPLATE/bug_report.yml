@@ -1,0 +1,53 @@
+name: Bug report
+description: Report a reproducible NeoRender Engine failure
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: checkboxes
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I am using RMX3700 or RMX3701 on Android 13.
+          required: true
+        - label: I disabled other modules that modify HWUI, SurfaceFlinger or Vulkan properties.
+          required: true
+        - label: I reviewed the support bundle for private information.
+          required: true
+  - type: input
+    attributes:
+      label: NeoRender version
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Root manager and version
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Build fingerprint
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Diagnostic output
+      description: Include `neorenderctl doctor`, relevant history and log lines.
+      render: shell
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.sh text eol=lf
+neorender text eol=lf
+neorenderctl text eol=lf
+*.zip binary

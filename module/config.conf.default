@@ -1,0 +1,54 @@
+# NeoRender Engine v1.0.0 — конфигурация.
+# Рабочая копия: /data/adb/neorender-engine/config.conf
+
+CONFIG_SCHEMA=4
+
+# Безопасный профиль по умолчанию для новых установок и обновления RC1.
+#   stock          — OEM-настройка без принудительного renderer
+#   compatibility  — SkiaGL для новых процессов
+#   vulkan         — SkiaVK для новых процессов, экспериментальный глобальный режим
+PROFILE=stock
+
+# Защита загрузки и ограниченный контроль стабильности.
+BOOT_GUARD=1
+BOOT_COMPLETED_TIMEOUT_SECONDS=600
+STABILITY_DELAY_SECONDS=60
+WATCHDOG_SECONDS=120
+STOCK_WATCHDOG_SECONDS=30
+SYSTEMUI_RESTART_LIMIT=4
+PROPERTY_OVERRIDE_LIMIT=3
+REAPPLY_ON_OVERRIDE=1
+
+# Двухступенчатое восстановление незавершённой загрузки.
+# Любой незавершённый non-stock цикл немедленно помещает renderer-профиль
+# в карантин и переводит конфигурацию в stock. Повторные незавершённые
+# stock-циклы сохраняются как диагностика, но не отключают модуль.
+BOOT_FAILURE_LIMIT=2
+BOOT_PENDING_MAX_AGE_SECONDS=172800
+PROFILE_QUARANTINE=1
+
+# Ограничения целевой среды.
+REQUIRED_ANDROID_API=33
+REQUIRE_REALME=1
+REQUIRE_QUALCOMM=1
+REQUIRE_HARDWARE_VULKAN=1
+STRICT_TARGET_MODEL=1
+
+# Персональный запуск приложений.
+DEFAULT_APP_RENDERER=skiavk
+APP_LAUNCH_WAIT_SECONDS=20
+APP_PIPELINE_WAIT_SECONDS=15
+ALLOW_PROTECTED_PACKAGES=0
+TRANSACTION_STALE_SECONDS=180
+
+# Парный A/B benchmark.
+BENCH_MIN_FRAMES=120
+BENCH_MIN_DURATION_SECONDS=20
+BENCH_MAX_DURATION_DRIFT_PERCENT=30
+BENCH_IMPROVEMENT_PERCENT=5
+BENCH_MAX_REGRESSION_PERCENT=3
+BENCH_THERMAL_PENALTY_TENTHS_C=20
+
+# Хранение данных.
+REPORT_RETENTION=30
+LOG_MAX_KIB=512

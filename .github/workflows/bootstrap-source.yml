@@ -1,0 +1,47 @@
+name: Bootstrap source tree
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.bootstrap/**'
+      - '.github/workflows/bootstrap-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reconstruct runtime source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p module/common
+          cat .bootstrap/functions-* > module/common/functions.sh
+          cat .bootstrap/neorender-[0-9][0-9] > module/neorender
+          cat .bootstrap/neorenderctl-* > module/neorenderctl
+          chmod 0755 module/neorender module/neorenderctl module/*.sh scripts/*.sh
+          rm -rf .bootstrap .github/workflows/bootstrap-source.yml
+
+      - name: Install validation dependencies
+        run: sudo apt-get update && sudo apt-get install -y busybox zip
+
+      - name: Validate and build
+        run: |
+          ./scripts/test.sh
+          ./scripts/build.sh
+
+      - name: Commit clean source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish NeoRender Engine v1.0.0 source'
+          git push

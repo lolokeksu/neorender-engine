@@ -1,0 +1,7 @@
+id=neorender-engine
+name=NeoRender Engine
+version=v1.0.0
+versionCode=10000
+author=Lolokeksu
+description=Systemless Android 13 HWUI renderer manager for Realme GT Neo 5 SE with Stock, SkiaGL and SkiaVK profiles, per-app sessions, A/B benchmarks, rollback protection and a Termux menu.
+updateJson=https://raw.githubusercontent.com/lolokeksu/neorender-engine/main/update.json
