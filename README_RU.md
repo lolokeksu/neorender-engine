@@ -1,21 +1,28 @@
-<div align="center">
+<p align="center">
+  <img src="docs/assets/banner.svg" width="100%" alt="NeoRender Engine — управляемый Android HWUI-рендеринг через SkiaGL и SkiaVK">
+</p>
 
-# NeoRender Engine
+<p align="center">
+  <a href="https://github.com/lolokeksu/neorender-engine/releases/latest"><img alt="Последний релиз" src="https://img.shields.io/github/v/release/lolokeksu/neorender-engine?display_name=tag&sort=semver"></a>
+  <a href="https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml"><img alt="Проверка и сборка" src="https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml/badge.svg"></a>
+  <img alt="Android 13" src="https://img.shields.io/badge/Android-13-3ddc84?logo=android&logoColor=white">
+</p>
 
-**Прозрачное управление HWUI-рендерером для Realme GT Neo 5 SE на Android 13**
+<p align="center">
+  <img alt="Протестированное устройство" src="https://img.shields.io/badge/tested-Realme%20GT%20Neo%205%20SE-64748b">
+  <img alt="Root APatch протестирован" src="https://img.shields.io/badge/root-APatch%20tested-f97316">
+  <img alt="Рендереры SkiaGL и SkiaVK" src="https://img.shields.io/badge/renderers-SkiaGL%20%7C%20SkiaVK-334155">
+</p>
 
-[![Релиз](https://img.shields.io/github/v/release/lolokeksu/neorender-engine?display_name=tag&sort=semver&style=flat-square)](https://github.com/lolokeksu/neorender-engine/releases/latest)
-[![Проверка](https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml/badge.svg)](https://github.com/lolokeksu/neorender-engine/actions/workflows/validate.yml)
-![Android](https://img.shields.io/badge/Android-13-3ddc84?style=flat-square&logo=android&logoColor=white)
-![Устройство](https://img.shields.io/badge/device-RMX3700%20%7C%20RMX3701-555?style=flat-square)
-![Root](https://img.shields.io/badge/root-APatch%20tested-orange?style=flat-square)
-![Shell](https://img.shields.io/badge/runtime-POSIX%20shell-lightgrey?style=flat-square)
-![Лицензия](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![Телеметрия](https://img.shields.io/badge/telemetry-none-success?style=flat-square)
+<p align="center">
+  <img alt="Среда POSIX shell" src="https://img.shields.io/badge/runtime-POSIX%20shell-a3a3a3?logo=gnu-bash&logoColor=111827">
+  <a href="LICENSE"><img alt="Лицензия MIT" src="https://img.shields.io/badge/license-MIT-6366f1"></a>
+  <img alt="Без телеметрии" src="https://img.shields.io/badge/telemetry-none-22c55e">
+</p>
 
-[English](README.md) · [Релизы](https://github.com/lolokeksu/neorender-engine/releases) · [Проблемы](https://github.com/lolokeksu/neorender-engine/issues) · [Безопасность](SECURITY.md)
+<p align="center"><a href="README.md">English</a> · <a href="https://github.com/lolokeksu/neorender-engine/releases">Релизы</a> · <a href="https://github.com/lolokeksu/neorender-engine/issues">Проблемы</a> · <a href="SECURITY.md">Безопасность</a></p>
 
-</div>
+---
 
 NeoRender Engine — systemless root-модуль для управления выбором **Android HWUI/Skia renderer** через свойство `debug.hwui.renderer`. Модуль предоставляет безопасный Stock-профиль, SkiaGL, SkiaVK, контролируемые сессии отдельных приложений, парные A/B-измерения, диагностику, автоматический откат и русскоязычное меню Termux.
 
